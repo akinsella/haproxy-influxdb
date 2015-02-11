@@ -18,6 +18,7 @@ type Config struct {
     Database string
     Socket string
     FrontEnds []string
+    LoadFields []string
 }
 
 func main() {
@@ -77,12 +78,28 @@ func main() {
             log.Printf("  - CheckStatus : %v", l.Checkstatus)
             log.Printf("  - CheckCode : %v", l.CheckCode)
             
-            points[i] = []interface{}{hostname, l.Pxname, l.Svname, l.Scur, l.Smax, l.Status, l.Checkfail, l.Checkstatus, l.CheckCode}
+            point := make([]string, 1 + len(config.LoadFields))
+
+            point[0] = hostname
+
+            for j, field := range config.LoadFields {
+                point[1 + j] = l[field]
+            }
+            
+            points[i] = point
         }
 
+        seriesColumns := make([]string, 1 + len(config.LoadFields))
+
+        seriesColumns[0] = "hostname"
+        
+        for i, field := range config.LoadFields {
+            seriesColumns[1 + i] = field
+        }
+        
         series := &client.Series{
             Name:    "haproxy_load",
-            Columns: []string{"hostname", "pxname", "svname", "scur", "smax", "status", "check_fail", "check_status", "check_code"},
+            Columns: seriesColumns,
             Points:  points,
         }
 
