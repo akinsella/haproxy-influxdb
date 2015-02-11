@@ -57,7 +57,7 @@ func main() {
 	}
 
     for _, frontEnd := range config.FrontEnds {
-        load, err := haproxy.Haproxy{Socket: haproxy.Socket(config.Socket)}.GetLoad(frontEnd)
+        load, err := haproxy.Haproxy{Socket: haproxy.Socket(config.Socket)}.GetLoadAsMap(frontEnd)
 
         if err != nil {
             log.Fatal(err)
@@ -68,21 +68,15 @@ func main() {
         hostname, _ := os.Hostname()
 
         for i, l := range load {
-            log.Printf("%s[%d] :", frontEnd, i)
-            log.Printf("  - Px name : %v", l.Pxname)
-            log.Printf("  - SV name : %v", l.Svname)
-            log.Printf("  - Current sessions : %v", l.Scur)
-            log.Printf("  - Max sessions : %v", l.Smax)
-            log.Printf("  - Health : %v", l.Status)
-            log.Printf("  - Checkfail : %v", l.Checkfail)
-            log.Printf("  - CheckStatus : %v", l.Checkstatus)
-            log.Printf("  - CheckCode : %v", l.CheckCode)
-            
-            point := make([]string, 1 + len(config.LoadFields))
+            log.Printf("%s[%d] : %v", frontEnd, i, l)
+
+            point := make([]interface{}, 1 + len(config.LoadFields))
 
             point[0] = hostname
 
+            log.Printf("  - hostname : '%v'", hostname)
             for j, field := range config.LoadFields {
+                log.Printf("  - %v : '%v'", field, l[field])
                 point[1 + j] = l[field]
             }
             

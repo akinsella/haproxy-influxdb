@@ -9,7 +9,7 @@
 		},
 		{
 			"ImportPath": "github.com/akinsella/go-haproxy/haproxy",
-			"Rev": "a1693432856370bd8e19d54a45a61e5b47e4488e"
+			"Rev": "04a90354b9a6b5c9fddd5295eff6f36b4b7cb0de"
 		},
 		{
 			"ImportPath": "github.com/influxdb/influxdb/client",
