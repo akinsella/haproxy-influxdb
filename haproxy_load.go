@@ -1,12 +1,12 @@
 package main
 
 import (
-	"log"
-	"os"
+    "log"
+    "os"
     "path"
     "flag"
-	"github.com/influxdb/influxdb/client"
-	"github.com/akinsella/go-haproxy/haproxy"
+    "github.com/influxdb/influxdb/client"
+    "github.com/akinsella/go-haproxy/haproxy"
     "github.com/BurntSushi/toml"
     "github.com/mitchellh/go-homedir"
 )
