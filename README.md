@@ -37,3 +37,4 @@ Configuration File Sample
     Database = "database"
     Socket = "/var/lib/haproxy/stats"
     FrontEnds = [ "IncomingHTTP" ]
+    LoadFields = [ "pxname", "svname", "scur", "smax", "status", "chkdown", "check_status", "check_code" ]
