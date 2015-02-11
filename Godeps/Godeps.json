@@ -1,0 +1,24 @@
+{
+	"ImportPath": "github.com/akinsella/haproxy-influxdb",
+	"GoVersion": "go1.3",
+	"Deps": [
+		{
+			"ImportPath": "github.com/BurntSushi/toml",
+			"Comment": "v0.1.0-16-gf706d00",
+			"Rev": "f706d00e3de6abe700c994cdd545a1a4915af060"
+		},
+		{
+			"ImportPath": "github.com/akinsella/go-haproxy/haproxy",
+			"Rev": "a1693432856370bd8e19d54a45a61e5b47e4488e"
+		},
+		{
+			"ImportPath": "github.com/influxdb/influxdb/client",
+			"Comment": "v0.8.8",
+			"Rev": "afde71eb1740fd763ab9450e1f700ba0e53c36d0"
+		},
+		{
+			"ImportPath": "github.com/mitchellh/go-homedir",
+			"Rev": "7d2d8c8a4e078ce3c58736ab521a40b37a504c52"
+		}
+	]
+}
