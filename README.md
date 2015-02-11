@@ -6,7 +6,7 @@ Install
 
 First go get haproxy-influxdb source:
 
-    go install github.com/akinsella/haproxy-influxdb
+    go get github.com/akinsella/haproxy-influxdb
 
 then, install godep:
 
